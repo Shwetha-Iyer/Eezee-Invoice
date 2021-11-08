@@ -60,7 +60,9 @@
   border: 2px solid rgb(57, 79, 133);
   color:white;
 }
-
+.padding-left{
+  padding-left: 30%;
+}
 .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
    background-color: rgb(218, 224, 247)
@@ -79,6 +81,13 @@ table.table-bordered > tbody > tr > td{
   border: 2px solid rgb(57, 79, 133);
   font-size:20px;
   color: rgb(57, 79, 133);
+  background-color: white;
+}
+
+.btn-mybuttondelete{
+  border: 2px solid rgb(190, 71, 71);
+  font-size:20px;
+  color: rgb(190, 71, 71);
   background-color: white;
 }
 .btn-mysuccess{

@@ -5,6 +5,9 @@ import {useContext} from "react";
 import UserContext from "../usercontext"; 
 import Showinvoice from "./showinvoice";
 import Createinvoice from "./createinvoice";
+const val = {
+  in:1
+}
 const axios = require("axios");
 export default function Dashboard(){
   console.log("Dashboard function called!!!")
@@ -70,16 +73,22 @@ export default function Dashboard(){
               <hr/>
               <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-white flex-parent jc-center">
-                  <button type="button" className="btn btn-lavender my-2 mx-2" onClick={()=>setDisplay(1)}>All Invoice</button>
+                  <button type="button" className="btn btn-lavender my-2 mx-2" onClick={()=>{setDisplay(-1);console.log("set -1");window.location.reload(false)}}>All Invoice</button>
                   <button type="button" className="btn btn-lavender my-2 mx-2" onClick={()=>setDisplay(2)}>Create Invoice</button>
                 </nav>
               </div>
               <div>
+                {
+                  console.log("display value",display)
+                }
               {
                 display === 1?
-                <Showinvoice/>:(
+                <Showinvoice dis={val}/>:(
                   display === 2? 
-                  <Createinvoice/>:null
+                  <Createinvoice/>:(
+                    display === -1?
+                    <Showinvoice dis={val}/>:null
+                  )
                 )
               }
               

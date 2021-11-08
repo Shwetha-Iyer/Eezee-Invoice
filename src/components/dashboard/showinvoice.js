@@ -3,35 +3,56 @@ import { Bars } from 'react-loading-icons';
 import ViewInvoice from "./viewinvoice";
 import {useContext} from "react";
 import UserContext from "../usercontext";
+import Updateinvoice from "./updateinvoice";
 const axios = require("axios");
-
-export default function Showinvoice(){
+export default function Showinvoice(props){
     let data = useContext(UserContext);
+    
+    console.log("Inside show invoice",data);
     let [page,setPage] = useState(0);
     let [invoice,setInvoice] = useState([]);
     let [viewitem,setViewitem] = useState({});
-    console.log("===================");
-    console.log("Context value",data.userid);
-    console.log("===================");
+    // (()=>{
+    //   console.log("inside iifee");
+    //   axios.get(`http://localhost:3100/users/getinvoice/${data.userid}`,{
+    //     headers:{
+    //       'Content-Type': 'application/json'
+    //     },
+    //     withCredentials: true,
+    //     crossDomain: true
+    //   }).then((res) => {
+    //     console.log(res);
+    //     if(res.status===200){
+    //       console.log("got result");
+    //       setInvoice(res.data);
+    //       setPage(1);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setPage(-1);
+    //   });
+    // })();
+
     useEffect(()=>{
-        axios.get(`http://localhost:3100/users/getinvoice/${data.userid}`,{
-          headers:{
-            'Content-Type': 'application/json'
-          },
-          withCredentials: true,
-          crossDomain: true
-        }).then((res) => {
-          console.log(res);
-          if(res.status===200){
-            console.log("got result");
-            setInvoice(res.data);
-            setPage(1);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          setPage(-1);
-        });
+      axios.get(`http://localhost:3100/users/getinvoice/${data.userid}`,{
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true,
+        crossDomain: true
+      }).then((res) => {
+        console.log(res);
+        if(res.status===200){
+          console.log("got result");
+          setInvoice(res.data);
+          setPage(1);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setPage(-1);
+      });
     },[data.userid]);
     return <>
     {
@@ -76,7 +97,7 @@ export default function Showinvoice(){
                                   <button type="button" className="btn" onClick={()=>{setPage(2);setViewitem(item)}}><i className="fa fa-eye" aria-hidden="true"></i></button>
                                 
                                   
-                                  <button type="button" className="btn"><i className="fa fa-pencil" aria-hidden="true"></i></button>
+                                  <button type="button" className="btn" onClick={()=>{setPage(3);setViewitem(item)}}><i className="fa fa-pencil" aria-hidden="true"></i></button>
                                 </td>
                               </tr>
                             })
@@ -93,7 +114,11 @@ export default function Showinvoice(){
               page===2?
                <ViewInvoice data={viewitem} id={data.userid}/>
               
-              :<h1 className="color-blue text-center"> Oops Something went wrong! Cant load your invoice.</h1>
+              :(page===3?
+                <Updateinvoice data={viewitem} id={data.userid}/>
+                :<h1 className="color-blue text-center"> Oops Something went wrong! Cant load your invoice.</h1>
+                )
+              
             )
                 
             
