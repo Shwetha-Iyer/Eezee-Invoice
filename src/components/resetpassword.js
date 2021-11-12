@@ -28,14 +28,14 @@ export default function Resetpassword(props){
     let [click,setClick] = useState(0);
     let history = useHistory();
     useEffect(()=>{
-        axios.post(`http://localhost:3100/auth/resetpwdcheck/${props.match.params.token}`,{
+        axios.post(`https://eezee-backend.herokuapp.com/auth/resetpwdcheck/${props.match.params.token}`,{
           headers:{
             'Content-Type': 'application/json'
           },
           withCredentials: true,
           crossDomain: true
         }).then((res) => {
-          console.log(res);
+          //console.log(res);
           if(res.status===200){
             setPage(1);
           }
@@ -65,7 +65,7 @@ export default function Resetpassword(props){
                         // same shape as initial values
                         setClick(1);
                         console.log(values);
-                        axios.post(`http://localhost:3100/auth/resetpwdcheck/${props.match.params.token}`,{
+                        axios.post(`https://eezee-backend.herokuapp.com/auth/resetpwdcheck/${props.match.params.token}`,{
                             secret:values.secret,
                         },{
                             headers:{
@@ -76,7 +76,7 @@ export default function Resetpassword(props){
                         })
                         .then((res) => {
                             if(res.status===200){
-                                console.log("success");
+                                //console.log("success");
                                 setClick(0);
                                 resetForm();
                                 setPage(2);
@@ -121,7 +121,7 @@ export default function Resetpassword(props){
                         // same shape as initial values
                         setClick(1);
                         console.log(values);
-                        axios.put(`http://localhost:3100/auth/resetpwd/${props.match.params.token}`,{
+                        axios.put(`https://eezee-backend.herokuapp.com/auth/resetpwd/${props.match.params.token}`,{
                             password:values.password,
                         },{
                             headers:{
@@ -156,11 +156,9 @@ export default function Resetpassword(props){
                 )}
                 </Formik>
                     </div>
-
                 </div>
             </div>: <img className="center responsive" src="../images/page unavailable.jpg" alt="pageunavailable"/>
                 )
-            
         )   
     }
     </>

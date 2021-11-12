@@ -55,7 +55,7 @@ export default function Createinvoice(props){
             onSubmit={(values,{resetForm}) => {
                 // same shape as initial values
                 setClick(1);
-                console.log(values);  
+                //console.log(values);  
                 let allbillitems = [
                     {
                         description:values.desc,
@@ -96,8 +96,8 @@ export default function Createinvoice(props){
                     notes:values.notes,
                     terms:values.terms,
                 }
-                console.log(final_data);
-                axios.put(`http://localhost:3100/users/createinvoice/${props.data._id}`,{final_data},{
+                //console.log(final_data);
+                axios.put(`https://eezee-backend.herokuapp.com/users/createinvoice/${props.data._id}`,{final_data},{
                     headers:{
                         'Content-Type': 'application/json'
                     },
@@ -105,7 +105,7 @@ export default function Createinvoice(props){
                     crossDomain: true
                 }).then((res)=>{
                     if(res.status===200){
-                        console.log("invoice added");
+                        //console.log("invoice added");
                         toast.success("Invoice Created Successfully!");
                         setClick(0);
                         resetForm();
@@ -235,13 +235,6 @@ export default function Createinvoice(props){
                                 }
                             }
                             />
-
-
-
-
-
-                            {//=======================================================================================
-                            }
                             <div className="row pt-4">
                                 <div className="col-md-4"></div>
                                 <div className="col-md-5">
@@ -293,14 +286,10 @@ export default function Createinvoice(props){
                                     <button type="submit" className="btn btn-mybutton mt-4 mt-3 mb-3">{click === 0 ? <span>Submit</span>: <span className="btn-login">Loading... <Oval stroke="#1adbad" fill="#000000" strokeOpacity={1} speed={1} fillOpacity={1} strokeWidth={3} height="1.5rem"/></span>}</button>
                                 </div>
                                 <div className="col-md-4"> </div>
-                            </div>
-                            
-                        </div>
-                        
+                            </div>    
+                        </div>    
                     </div>
-                    
                      <br/>
-                    
                 </Form>
             )}
         </Formik>

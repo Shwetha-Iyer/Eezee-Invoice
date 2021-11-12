@@ -17,14 +17,14 @@ export default function Dashboard(){
     let [name,setName] = useState("");
     let [display,setDisplay] = useState(0);
     let handlelogout = ()=>{
-        axios.delete("http://localhost:3100/auth/logout",{
+        axios.delete("https://eezee-backend.herokuapp.com/auth/logout",{
             headers:{
               'Content-Type': 'application/json'
             },
             withCredentials: true,
             crossDomain: true
           }).then((res) => {
-            console.log(res);
+            //console.log(res);
             if(res.status===200){
               console.log("Logged out");
               history.push(`/login`);
@@ -42,7 +42,7 @@ export default function Dashboard(){
           withCredentials: true,
           crossDomain: true
         }).then((res) => {
-          console.log(res);
+          //console.log(res);
           if(res.status===200){
             console.log("Logged in");
             data.setUserid(res.data.sessUser.id);
@@ -91,10 +91,8 @@ export default function Dashboard(){
                   )
                 )
               }
-              
               </div>
               </div>
-            
             </>
         )
     }

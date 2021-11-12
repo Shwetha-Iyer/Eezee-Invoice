@@ -12,39 +12,17 @@ export default function Showinvoice(props){
     let [page,setPage] = useState(0);
     let [invoice,setInvoice] = useState([]);
     let [viewitem,setViewitem] = useState({});
-    // (()=>{
-    //   console.log("inside iifee");
-    //   axios.get(`http://localhost:3100/users/getinvoice/${data.userid}`,{
-    //     headers:{
-    //       'Content-Type': 'application/json'
-    //     },
-    //     withCredentials: true,
-    //     crossDomain: true
-    //   }).then((res) => {
-    //     console.log(res);
-    //     if(res.status===200){
-    //       console.log("got result");
-    //       setInvoice(res.data);
-    //       setPage(1);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setPage(-1);
-    //   });
-    // })();
-
     useEffect(()=>{
-      axios.get(`http://localhost:3100/users/getinvoice/${data.userid}`,{
+      axios.get(`https://eezee-backend.herokuapp.com/users/getinvoice/${data.userid}`,{
         headers:{
           'Content-Type': 'application/json'
         },
         withCredentials: true,
         crossDomain: true
       }).then((res) => {
-        console.log(res);
+        //console.log(res);
         if(res.status===200){
-          console.log("got result");
+          //console.log("got result");
           setInvoice(res.data);
           setPage(1);
         }
@@ -113,18 +91,12 @@ export default function Showinvoice(props){
             </>:(
               page===2?
                <ViewInvoice data={viewitem} id={data.userid}/>
-              
               :(page===3?
                 <Updateinvoice data={viewitem} id={data.userid}/>
                 :<h1 className="color-blue text-center"> Oops Something went wrong! Cant load your invoice.</h1>
                 )
-              
-            )
-                
-            
-            
+            )   
         )
     }
     </>
-
 }

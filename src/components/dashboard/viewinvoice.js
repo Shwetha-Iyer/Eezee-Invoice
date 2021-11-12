@@ -204,16 +204,16 @@ export default function ViewInvoice(props){
         pdfMake.createPdf(docDefinition).download(`Invoice(${props.data.invoice_id}).pdf`);
     }
     let deleteinvoice = ()=>{
-        axios.put(`http://localhost:3100/users/deleteinvoice/${props.id}`,{invoice_id:props.data.invoice_id},{
+        axios.put(`https://eezee-backend.herokuapp.com/users/deleteinvoice/${props.id}`,{invoice_id:props.data.invoice_id},{
         headers:{
           'Content-Type': 'application/json'
         },
         withCredentials: true,
         crossDomain: true
       }).then((res) => {
-        console.log(res);
+        //console.log(res);
         if(res.status===200){
-          console.log("invoice deleted");
+          //console.log("invoice deleted");
           toast.success("Invoice Deleted Successfully!");
           setClick(0);
         }

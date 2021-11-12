@@ -21,14 +21,14 @@ export default function Login(){
     let [click,setClick] = useState(0);
     let history = useHistory();
     useEffect(()=>{
-        axios.get("http://localhost:3100/auth/authchecker",{
+        axios.get("https://eezee-backend.herokuapp.com/auth/authchecker",{
           headers:{
             'Content-Type': 'application/json'
           },
           withCredentials: true,
           crossDomain: true
         }).then((res) => {
-          console.log(res);
+          //console.log(res);
           if(res.status===200){
             console.log("Logged in");
             history.push(`/dashboard`);
@@ -56,7 +56,7 @@ export default function Login(){
                         // same shape as initial values
                         setClick(1);
                         console.log(values);
-                        axios.post("http://localhost:3100/auth/login",{
+                        axios.post("https://eezee-backend.herokuapp.com/auth/login",{
                             email:values.email,
                             password:values.password
                         },{
@@ -104,7 +104,6 @@ export default function Login(){
                 </div>
             </div>
             <div className="col-md-3"></div>
-            
         </div>
     </div>
     </>

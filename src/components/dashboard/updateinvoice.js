@@ -97,8 +97,8 @@ export default function Updateinvoice(props){
                     terms:values.terms,
                     invoice_id:props.data.invoice_id
                 }
-                console.log(final_data);
-                axios.put(`http://localhost:3100/users/updateinvoice/${props.id}`,{final_data},{
+                //console.log(final_data);
+                axios.put(`https://eezee-backend.herokuapp.com/users/updateinvoice/${props.id}`,{final_data},{
                     headers:{
                         'Content-Type': 'application/json'
                     },
@@ -106,7 +106,7 @@ export default function Updateinvoice(props){
                     crossDomain: true
                 }).then((res)=>{
                     if(res.status===200){
-                        console.log("invoice updated");
+                        //console.log("invoice updated");
                         toast.success("Invoice Updated Successfully!");
                         setClick(0);
                         //resetForm();
@@ -194,9 +194,6 @@ export default function Updateinvoice(props){
                                     <Field type="number" className="form-control details my-3" placeholder="Amount" name="amount" id="amount" value={values.amount=values.qty*values.rate} readOnly={true}/>
                                 </div>
                             </div>
-                            {
-                                //====================================================================================
-                            }
                             <FieldArray name="billitems"
                             render = {
                                 arrayHelpers =>{
@@ -236,13 +233,6 @@ export default function Updateinvoice(props){
                                 }
                             }
                             />
-
-
-
-
-
-                            {//=======================================================================================
-                            }
                             <div className="row pt-4">
                                 <div className="col-md-4"></div>
                                 <div className="col-md-5">
@@ -294,14 +284,10 @@ export default function Updateinvoice(props){
                                     <button type="submit" className="btn btn-mybutton mt-4 mt-3 mb-3">{click === 0 ? <span>Submit</span>: <span className="btn-login">Loading... <Oval stroke="#1adbad" fill="#000000" strokeOpacity={1} speed={1} fillOpacity={1} strokeWidth={3} height="1.5rem"/></span>}</button>
                                 </div>
                                 <div className="col-md-4"> </div>
-                            </div>
-                            
+                            </div>    
                         </div>
-                        
                     </div>
-                    
-                     <br/>
-                    
+                     <br/>  
                 </Form>
             )}
         </Formik>

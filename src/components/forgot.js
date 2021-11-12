@@ -27,7 +27,7 @@ export default function Forgot(){
                         // same shape as initial values
                         setClick(1);
                         console.log(values);
-                        axios.put("http://localhost:3100/auth/forgot",{email:values.email},{
+                        axios.put("https://eezee-backend.herokuapp.com/auth/forgot",{email:values.email},{
                             headers:{
                                 'Content-Type': 'application/json'
                             },
@@ -61,8 +61,7 @@ export default function Forgot(){
                 </Formik>
                 </div>
             </div>
-            <div className="col-md-3"></div>
-            
+            <div className="col-md-3"></div>   
         </div>
     </div>
     </>
