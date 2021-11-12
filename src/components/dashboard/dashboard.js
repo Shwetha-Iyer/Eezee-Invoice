@@ -85,7 +85,7 @@ export default function Dashboard(){
                 display === 1?
                 <Showinvoice dis={val}/>:(
                   display === 2? 
-                  <Createinvoice/>:(
+                  <Createinvoice dis={val}/>:(
                     display === -1?
                     <Showinvoice dis={val}/>:null
                   )
