@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, FieldArray,ErrorMessage } from 'formik';
+import UserContext from "../usercontext"; 
+import {useContext} from "react";
 import * as Yup from 'yup';
 import { Oval } from 'react-loading-icons';
 import { toast } from 'react-toastify';
@@ -41,6 +43,9 @@ const SignupSchema = Yup.object().shape({
 });
 export default function Createinvoice(props){
     let [click,setClick] = useState(0);
+    //console.log(props);
+    let data = useContext(UserContext);
+    //console.log(data);
     return <>
     
         <h2 className="color-blue mt-4 text-center"> Create Invoice</h2>
@@ -97,7 +102,7 @@ export default function Createinvoice(props){
                     terms:values.terms,
                 }
                 //console.log(final_data);
-                axios.put(`https://eezee-backend.herokuapp.com/users/createinvoice/${props.data._id}`,{final_data},{
+                axios.put(`https://eezee-backend.herokuapp.com/users/createinvoice/${data.userid}`,{final_data},{
                     headers:{
                         'Content-Type': 'application/json'
                     },

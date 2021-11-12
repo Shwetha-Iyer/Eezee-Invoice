@@ -7,8 +7,6 @@ import Updateinvoice from "./updateinvoice";
 const axios = require("axios");
 export default function Showinvoice(props){
     let data = useContext(UserContext);
-    
-    console.log("Inside show invoice",data);
     let [page,setPage] = useState(0);
     let [invoice,setInvoice] = useState([]);
     let [viewitem,setViewitem] = useState({});

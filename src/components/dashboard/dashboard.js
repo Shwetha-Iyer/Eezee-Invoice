@@ -10,7 +10,7 @@ const val = {
 }
 const axios = require("axios");
 export default function Dashboard(){
-  console.log("Dashboard function called!!!")
+    //console.log("Dashboard function called!!!")
     let data = useContext(UserContext);
     let history = useHistory();
     let [page,setPage] = useState(0);
@@ -35,7 +35,7 @@ export default function Dashboard(){
           });
       }
     useEffect(()=>{
-        axios.get("https://eezee-backend.herokuapp.com/auth/authchecker",{
+        axios.get("http://localhost:3100/auth/authchecker",{
           headers:{
             'Content-Type': 'application/json'
           },
@@ -79,13 +79,13 @@ export default function Dashboard(){
               </div>
               <div>
                 {
-                  console.log("display value",display)
+                  //console.log("display value",display)
                 }
               {
                 display === 1?
                 <Showinvoice dis={val}/>:(
                   display === 2? 
-                  <Createinvoice dis={val}/>:(
+                  <Createinvoice/>:(
                     display === -1?
                     <Showinvoice dis={val}/>:null
                   )

@@ -55,7 +55,7 @@ export default function Login(){
                     onSubmit={(values,{resetForm}) => {
                         // same shape as initial values
                         setClick(1);
-                        console.log(values);
+                        //console.log(values);
                         axios.post("https://eezee-backend.herokuapp.com/auth/login",{
                             email:values.email,
                             password:values.password

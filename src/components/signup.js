@@ -80,7 +80,7 @@ export default function Login(){
                         })
                         .then((res) => {
                             if(res.status===200){
-                                console.log("registration success");
+                                //console.log("registration success");
                                 setClick(0);
                                 toast.success('SignUp successful. Account activation link sent!');
                                 resetForm();
@@ -115,6 +115,7 @@ export default function Login(){
                 </div>
             </div>
             <div className="col-md-3"></div>
+            
         </div>
     </div>
     </>
