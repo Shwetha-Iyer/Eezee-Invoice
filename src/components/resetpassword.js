@@ -28,7 +28,7 @@ export default function Resetpassword(props){
     let [click,setClick] = useState(0);
     let history = useHistory();
     useEffect(()=>{
-        axios.put(`https://eezee-backend.herokuapp.com/auth/resetpwdcheck/${props.match.params.token}`,{
+        axios.post(`https://eezee-backend.herokuapp.com/auth/resetpwdcheck/${props.match.params.token}`,{
           headers:{
             'Content-Type': 'application/json'
           },
@@ -121,7 +121,7 @@ export default function Resetpassword(props){
                         // same shape as initial values
                         setClick(1);
                         //console.log(values);
-                        axios.put(`https://eezee-backend.herokuapp.com/resetpwd/${props.match.params.token}`,{
+                        axios.put(`https://eezee-backend.herokuapp.com/auth/resetpwd/${props.match.params.token}`,{
                             password:values.password,
                         },{
                             headers:{
